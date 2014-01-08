@@ -1,8 +1,6 @@
-[![wercker status](https://app.wercker.com/status/6077bdbf04300a6412268672fa39e71b/m "wercker status")](https://app.wercker.com/project/bykey/6077bdbf04300a6412268672fa39e71b)
+# slack-notify-no-owner-info
 
-# slack-notify
-
-Send a message to a [Slack Channel](https://slack.com/).
+Send a message to a [Slack Channel](https://slack.com/). This version target use case where a Wercker account is used to run builds and deployments and stops this poor soul from getting tonnes of notifications in Slack when builds and deployements were triggered by team mates.
 
 ### required
 
@@ -30,7 +28,7 @@ Add `SLACK_TOKEN` as deploy target or application environment variable.
 
     build:
         after-steps:
-            - sherzberg/slack-notify:
+            - williamli/slack-notify-no-owner-info:
                 subdomain: slacksubdomain
                 token: $SLACK_TOKEN
                 channel: general
@@ -59,6 +57,10 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
+
+## 0.0.6.1
+- Forked https://app.wercker.com/#applications/527ac6e85930ceca130041c3/tab/details
+and removed owner info.
 
 ## 0.0.6
 - Deploy url added

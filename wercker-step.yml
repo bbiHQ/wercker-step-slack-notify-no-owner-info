@@ -1,6 +1,6 @@
-name: slack-notify
-version: 0.0.6
-description: Sends notifications to Slack
+name: slack-notify-no-owner-info
+version: 0.0.6.1
+description: Sends notifications to Slack without Wercker owner info. This version is a fork of https://app.wercker.com/#applications/527ac6e85930ceca130041c3/tab/details . This version target use case where a Wercker account is used to run builds and deployments and stops this poor soul from getting tonnes of notifications in Slack when builds and deployements were triggered by team mates.
 keywords:
   - notification
   - slack
