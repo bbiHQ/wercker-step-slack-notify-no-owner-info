@@ -58,7 +58,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
 
-## 0.0.6.1
+## 0.0.7
 - Forked https://app.wercker.com/#applications/527ac6e85930ceca130041c3/tab/details
 and removed owner info.
 
