@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/52ccde2b7207b80b5500cc96/m "wercker status")](https://app.wercker.com/project/bykey/52ccde2b7207b80b5500cc96)
+
 # slack-notify-no-owner-info
 
 Send a message to a [Slack Channel](https://slack.com/). This version target use case where a Wercker account is used to run builds and deployments and stops this poor soul from getting tonnes of notifications in Slack when builds and deployements were triggered by team mates.
