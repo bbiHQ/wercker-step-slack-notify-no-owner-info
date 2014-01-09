@@ -60,6 +60,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
 
+## 0.0.10
+- decoupled from sherzberg / wercker-step-slack-notify in github so this repo is no longer registered as its fork
+
 ## 0.0.9
 - adds wercker build status badge to readme
 
