@@ -1,4 +1,4 @@
-[![wercker status](https://app.wercker.com/status/52ccde2b7207b80b5500cc96/m "wercker status")](https://app.wercker.com/project/bykey/52ccde2b7207b80b5500cc96)
+[![wercker status](https://app.wercker.com/status/bafbaf8126f04b7fc4baf38736f3d897/m "wercker status")](https://app.wercker.com/project/bykey/bafbaf8126f04b7fc4baf38736f3d897)
 
 # slack-notify-no-owner-info
 
@@ -59,6 +59,9 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
+
+## 0.0.9
+- adds wercker build status badge to readme
 
 ## 0.0.8
 - run.sh variable update
