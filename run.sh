@@ -1,57 +1,57 @@
 #!/bin/bash
 
 
-if [ ! -n "$WERCKER_SLACK_NOTIFY_SUBDOMAIN" ]; then
+if [ ! -n "$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_SUBDOMAIN" ]; then
 # fatal causes the wercker interface to display the error without the need to
 # expand the step
   fatal 'Please specify the subdomain property'
 fi
 
-if [ ! -n "$WERCKER_SLACK_NOTIFY_TOKEN" ]; then
+if [ ! -n "$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_TOKEN" ]; then
   fatal 'Please specify token property'
 fi
 
-if [ ! -n "$WERCKER_SLACK_NOTIFY_CHANNEL" ]; then
+if [ ! -n "$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_CHANNEL" ]; then
   fatal 'Please specify a channel'
 fi
 
-if [[ $WERCKER_SLACK_NOTIFY_CHANNEL == \#* ]]; then
+if [[ $WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_CHANNEL == \#* ]]; then
   fatal "Please specify the channel without the '#'"
 fi
 
-if [ ! -n "$WERCKER_SLACK_NOTIFY_FAILED_MESSAGE" ]; then
+if [ ! -n "$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_FAILED_MESSAGE" ]; then
   if [ ! -n "$DEPLOY" ]; then
-    export WERCKER_SLACK_NOTIFY_FAILED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_BUILD_URL|build> of $WERCKER_GIT_BRANCH by $WERCKER_STARTED_BY failed."
+    export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_FAILED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_BUILD_URL|build> of $WERCKER_GIT_BRANCH by $WERCKER_STARTED_BY failed."
   else
-    export WERCKER_SLACK_NOTIFY_FAILED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_DEPLOY_URL|deploy> of $WERCKER_GIT_BRANCH to $WERCKER_DEPLOYTARGET_NAME by $WERCKER_STARTED_BY failed."
+    export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_FAILED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_DEPLOY_URL|deploy> of $WERCKER_GIT_BRANCH to $WERCKER_DEPLOYTARGET_NAME by $WERCKER_STARTED_BY failed."
   fi
 fi
 
-if [ ! -n "$WERCKER_SLACK_NOTIFY_PASSED_MESSAGE" ]; then
+if [ ! -n "$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_PASSED_MESSAGE" ]; then
   if [ ! -n "$DEPLOY" ]; then
-    export WERCKER_SLACK_NOTIFY_PASSED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_BUILD_URL|build> of $WERCKER_GIT_BRANCH by $WERCKER_STARTED_BY passed."
+    export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_PASSED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_BUILD_URL|build> of $WERCKER_GIT_BRANCH by $WERCKER_STARTED_BY passed."
   else
-    export WERCKER_SLACK_NOTIFY_PASSED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_DEPLOY_URL|deploy of $WERCKER_GIT_BRANCH> to $WERCKER_DEPLOYTARGET_NAME by $WERCKER_STARTED_BY passed."
+    export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_PASSED_MESSAGE="$WERCKER_APPLICATION_NAME: <$WERCKER_DEPLOY_URL|deploy of $WERCKER_GIT_BRANCH> to $WERCKER_DEPLOYTARGET_NAME by $WERCKER_STARTED_BY passed."
   fi
 fi
 
 if [ "$WERCKER_RESULT" = "passed" ]; then
-  export WERCKER_SLACK_NOTIFY_MESSAGE="$WERCKER_SLACK_NOTIFY_PASSED_MESSAGE"
+  export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_MESSAGE="$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_PASSED_MESSAGE"
 else
-  export WERCKER_SLACK_NOTIFY_MESSAGE="$WERCKER_SLACK_NOTIFY_FAILED_MESSAGE"
+  export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_MESSAGE="$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_FAILED_MESSAGE"
 fi
 
 
-if [ "$WERCKER_SLACK_NOTIFY_ON" = "failed" ]; then
+if [ "$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_ON" = "failed" ]; then
   if [ "$WERCKER_RESULT" = "passed" ]; then
     echo "Skipping.."
     return 0
   fi
 fi
 
-json="{\"channel\": \"#$WERCKER_SLACK_NOTIFY_CHANNEL\", \"text\": \"$WERCKER_SLACK_NOTIFY_MESSAGE\"}"
+json="{\"channel\": \"#$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_CHANNEL\", \"text\": \"$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_MESSAGE\"}"
 
-RESULT=`curl -s -d "payload=$json" "https://$WERCKER_SLACK_NOTIFY_SUBDOMAIN.slack.com/services/hooks/incoming-webhook?token=$WERCKER_SLACK_NOTIFY_TOKEN" --output $WERCKER_STEP_TEMP/result.txt -w "%{http_code}"`
+RESULT=`curl -s -d "payload=$json" "https://$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_SUBDOMAIN.slack.com/services/hooks/incoming-webhook?token=$WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_TOKEN" --output $WERCKER_STEP_TEMP/result.txt -w "%{http_code}"`
 
 if [ "$RESULT" = "500" ]; then
   if grep -Fqx "No token" $WERCKER_STEP_TEMP/result.txt; then

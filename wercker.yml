@@ -8,9 +8,9 @@ build:
     #     name: "test: Successful notify"
     #     code: |
     #       source ./tests/helper.sh
-    #       export WERCKER_SLACK_NOTIFY_SUBDOMAIN="wercker"
-    #       export WERCKER_SLACK_NOTIFY_TOKEN=$CORRECT_SLACK_TOKEN
-    #       export WERCKER_SLACK_NOTIFY_CHANNEL="product"
+    #       export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_SUBDOMAIN="wercker"
+    #       export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_TOKEN=$CORRECT_SLACK_TOKEN
+    #       export WERCKER_SLACK_NOTIFY_NO_OWNER_INFO_CHANNEL="product"
     #       export WERCKER_DEPLOY_URL="http://wercker.com"
     #       export DEPLOY=true
     #       source ./run.sh
